@@ -15,28 +15,28 @@ namespace Practica4
             n1 = new Neurona1();
             n2 = new Neurona2();
         }
-        public void Axon(String dato)
-        {
-            this.dato = dato;
-        }
-        public String getAxon()
-        {
-            return dato;
-        }
+        public String Dato { get => dato; set => dato = value; }
+
         public void Platica()
         {
             String respuesta = "";
-            n1.Axon(dato);
-            n1.CaracterRandom();
-            char c = n1.getAxon();
+            n1.Axon(dato);          // Manda a neurona 1 la cadena de caracteres a buscar
+            n1.CaracterRandom();    // Genera un caracter random dentro de la cadena anterior
+            char c = n1.getAxon();  // Retorna el caracter generado aleatoriamente
             Console.WriteLine("[Neurona 1]  Tienes el Caracter: " + c);
             Thread.Sleep(1000);
-            n2.BuscaCaracter(c);
-            if (n2.getAxon() == 0)
-                respuesta = "No hay Coincidencias";
+
+            char x = n2.BuscaCaracter(dato);
+            Console.WriteLine("[Neurona 2]  Tienes el Caracter: " + x);
+            if (x != 'f')
+            {
+                respuesta = "[Silaba] : " + c + x;
+            }
             else
-                respuesta = "Si hay Coincidencias";
-            Console.WriteLine("[Neurona 2] Caracter encontrados: " + respuesta);
+                respuesta = "No hay Posibles silabas";
+
+            Console.WriteLine(respuesta);
+            //Console.WriteLine("[Neurona 2] Caracter encontrados: " + respuesta);
             Thread.Sleep(1000);
             Platica();
         }

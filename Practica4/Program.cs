@@ -9,7 +9,7 @@ namespace Practica4
         public Perceptron()
         {
             n3 = new Neurona3();
-            n3.Axon("abcdefghijklmnopq");
+            n3.Dato = ("bcdfghjklmnñpqrstvwxyz");
             n3.Platica();
         }
         static void Main(string[] args)

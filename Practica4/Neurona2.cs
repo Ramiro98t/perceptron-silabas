@@ -8,7 +8,7 @@ namespace Practica4
     {
         private double TASA_APRENDIZAJE = 0.5d;
         private String dato;
-        private String BaseConocimiento = "matematicas";
+        private String BaseConocimiento = "murcielago";
         private int totalcaracter = 0;
         private Random ran;
         public Neurona2()
@@ -24,14 +24,23 @@ namespace Practica4
             return this.totalcaracter;
         }
 
-        public void BuscaCaracter(char caracter)
+        public char BuscaCaracter(String cadena)
         {
             totalcaracter = 0;
+            char segC;
+
             for (int x = 0; x < this.BaseConocimiento.Length - 1; x++)
-                if (this.BaseConocimiento[x] == caracter)
+            {
+                x = ran.Next(this.BaseConocimiento.Length);
+                if (!cadena.Contains(this.BaseConocimiento[x]))     // Si no contiene una consonante
                 {
-                    totalcaracter += 1;
+                    segC = this.BaseConocimiento[x];
+
+                    //totalcaracter += 1;
+                    return segC;
                 }
+            }
+            return 'f';
         }
     }
 }
